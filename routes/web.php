@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PagesController@index')->name('login');
 Route::post('/login', 'PagesController@login')->name('login.post');
 Route::get('/logout', 'PagesController@logout')->name('logout');
+Route::post('/forgot', 'PagesController@forgot')->name('forgot');
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard');

@@ -184,11 +184,16 @@
 
                 var formData = new FormData();
                 var form = $(this);
-                var ex = form.serialize().split('&');
-                $.each(ex, function (i, v) { 
-                    var eex = v.split('=');
-                    formData.append(eex[0], eex[1]);
-                });
+                // var ex = form.serialize().split('&');
+                // $.each(ex, function (i, v) { 
+                //     var eex = v.split('=');
+                //     formData.append(eex[0], eex[1]);
+                // });
+                formData.append('_method', $('input[name="_method"]').val());
+                formData.append('_token', $('input[name="_token"]').val());
+                formData.append('content_category_id', $('select[name="content_category_id"]').val());
+                formData.append('title', $('input[name="title"]').val());
+                formData.append('body', $('textarea[name="body"]').val());
                 var files = $('#file')[0].files;
                 if(files.length > 0 ){
                     formData.append('file', files[0]);
@@ -223,9 +228,11 @@
 
                 var data = JSON.parse($(this).attr('data-json'));
                 $.each(data, function (i, v) { 
-                    $(`.form-group input[name="${i}"]`).val(v);
-                    $(`textarea[name="${i}"`).val(v);
-                    $(`select[name="${i}"]`).val(v);
+                    if (i != 'file') {
+                        $(`.form-group input[name="${i}"]`).val(v);
+                        $(`textarea[name="${i}"`).val(v);
+                        $(`select[name="${i}"]`).val(v);
+                    }
                 });
 
                 $('#mtitle').text('Update');

@@ -89,4 +89,9 @@ class PagesController extends Controller
 
         return view('pages.detail', compact('pageTitle', 'contents', 'myContents', 'contentCategories', 'recomContents'));
     }
+
+    public function forgot(Request $request)
+    {
+        
+    }
 }
