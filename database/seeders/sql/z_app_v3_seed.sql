@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50724
  Source Host           : localhost:3306
- Source Schema         : assessment2
+ Source Schema         : assessment
 
  Target Server Type    : MySQL
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 20/07/2022 10:16:50
+ Date: 20/07/2022 23:06:58
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `content_categories`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of content_categories
@@ -71,7 +71,7 @@ CREATE TABLE `contents`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contents
@@ -157,6 +157,8 @@ CREATE TABLE `model_has_roles`  (
 INSERT INTO `model_has_roles` VALUES (1, 'App\\Models\\User', 1);
 INSERT INTO `model_has_roles` VALUES (2, 'App\\Models\\User', 2);
 INSERT INTO `model_has_roles` VALUES (1, 'App\\Models\\User', 3);
+INSERT INTO `model_has_roles` VALUES (2, 'App\\Models\\User', 4);
+INSERT INTO `model_has_roles` VALUES (1, 'App\\Models\\User', 6);
 
 -- ----------------------------
 -- Table structure for password_resets
@@ -185,7 +187,7 @@ CREATE TABLE `permissions`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `permissions_name_guard_name_unique`(`name`, `guard_name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of permissions
@@ -211,6 +213,11 @@ INSERT INTO `permissions` VALUES (21, 'content-category-create', 'web', NULL, NU
 INSERT INTO `permissions` VALUES (22, 'content-category-edit', 'web', NULL, NULL);
 INSERT INTO `permissions` VALUES (23, 'content-category-delete', 'web', NULL, NULL);
 INSERT INTO `permissions` VALUES (24, 'content-category-show', 'web', NULL, NULL);
+INSERT INTO `permissions` VALUES (25, 'permission-list', 'web', NULL, NULL);
+INSERT INTO `permissions` VALUES (26, 'permission-create', 'web', NULL, NULL);
+INSERT INTO `permissions` VALUES (27, 'permission-edit', 'web', NULL, NULL);
+INSERT INTO `permissions` VALUES (28, 'permission-delete', 'web', NULL, NULL);
+INSERT INTO `permissions` VALUES (29, 'permission-show', 'web', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for role_has_permissions
@@ -249,6 +256,11 @@ INSERT INTO `role_has_permissions` VALUES (21, 1);
 INSERT INTO `role_has_permissions` VALUES (22, 1);
 INSERT INTO `role_has_permissions` VALUES (23, 1);
 INSERT INTO `role_has_permissions` VALUES (24, 1);
+INSERT INTO `role_has_permissions` VALUES (25, 1);
+INSERT INTO `role_has_permissions` VALUES (26, 1);
+INSERT INTO `role_has_permissions` VALUES (27, 1);
+INSERT INTO `role_has_permissions` VALUES (28, 1);
+INSERT INTO `role_has_permissions` VALUES (29, 1);
 INSERT INTO `role_has_permissions` VALUES (19, 2);
 
 -- ----------------------------
@@ -288,7 +300,7 @@ CREATE TABLE `users`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_username_unique`(`username`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of users
@@ -296,5 +308,7 @@ CREATE TABLE `users`  (
 INSERT INTO `users` VALUES (1, 'Administrator', 'administrator', 'administrator@app.com', NULL, '$2y$10$vuHvC85kY5J3179.y4JXVOBaqUfaHf.jXxiU8sbGLxKnpq0jBHTFK', NULL, NULL, NULL);
 INSERT INTO `users` VALUES (2, 'User', 'user', 'user@app.com', NULL, '$2y$10$4mQOdkPB08Vem17Q17PMjehPZSv1GfSkwxfn84ASXrTe5AtX6xLkS', NULL, '2022-07-19 18:59:41', '2022-07-19 18:59:41');
 INSERT INTO `users` VALUES (3, 'Admin2', 'admin2', 'admin2@app.com', NULL, '$2y$10$nC7JieKMtOPdVp4T/KLnuutBDlVtiJu6cyIdWz2xhX8JVIVFP9ZG6', NULL, '2022-07-20 02:09:42', '2022-07-20 02:09:42');
+INSERT INTO `users` VALUES (4, 'a', 'a', 'a@a.com', NULL, '$2y$10$pgdIWpt0tfenN.YrBV8kf.DHtJwe.LDtkRjrZXvY/53ufiRagItmO', NULL, '2022-07-20 13:48:14', '2022-07-20 13:48:14');
+INSERT INTO `users` VALUES (6, 'ba', 'ba', 'ba@b.com', NULL, '$2y$10$ecW9poT0l0V7uKYg7NdiqeDDzMwRkWDxOCZwZ1Tv0M3/bcYZISOj6', NULL, '2022-07-20 13:50:27', '2022-07-20 14:06:26');
 
 SET FOREIGN_KEY_CHECKS = 1;
