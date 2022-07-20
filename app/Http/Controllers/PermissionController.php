@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContentCategory;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
 /**
- * Class ContentCategoryController
+ * Class PermissionController
  * @package App\Http\Controllers
  */
-class ContentCategoryController extends Controller
+class PermissionController extends Controller
 {
-    public static $pageTitle = 'Category';
-    // public static $pageDescription = 'Content Category Description';
-    // public static $modelName = 'App\Models\ContentCategory';
-    public static $permissionName = 'content-category';
-    public static $folderPath = 'content-category';
-    public static $routePath = 'content-categories';
+    public static $pageTitle = 'Permission';
+    // public static $pageDescription = 'Permission Description';
+    // public static $modelName = 'App\Models\Permission';
+    public static $permissionName = 'permission';
+    public static $folderPath = 'permission';
+    public static $routePath = 'permissions';
     public static $pageBreadcrumbs = [];
 
     function __construct()
@@ -37,8 +37,8 @@ class ContentCategoryController extends Controller
     public function index(Request $req)
     {
         if ($req->ajax()) {
-            return Datatables::of(ContentCategory::query())->addIndexColumn()->make(true);
-            // return Datatables::of(ContentCategory::with('roles'))->addIndexColumn()->make(true);
+            return Datatables::of(Permission::query())->addIndexColumn()->make(true);
+            // return Datatables::of(Permission::with('roles'))->addIndexColumn()->make(true);
         }
 
         $pageTitle = self::$pageTitle;
@@ -51,7 +51,7 @@ class ContentCategoryController extends Controller
 
     public function create()
     {
-        $contentCategory = new ContentCategory();
+        $permission = new Permission();
 
         $pageTitle = self::$pageTitle;
         $pageBreadcrumbs = self::$pageBreadcrumbs;
@@ -61,13 +61,14 @@ class ContentCategoryController extends Controller
         ];
         $routePath = self::$routePath;
         
-        return view(self::$folderPath.'.create', compact('contentCategory', 'pageTitle', 'pageBreadcrumbs', 'routePath'));
+        return view(self::$folderPath.'.create', compact('permission', 'pageTitle', 'pageBreadcrumbs', 'routePath'));
     }
 
     public function store(Request $request)
     {
         $req = $request->all();
-        $contentCategory = ContentCategory::create($req);
+        $req['guard_name'] = 'web';
+        $permission = Permission::create($req);
 
         if ($request->ajax()) {
             return response()->json([
@@ -83,7 +84,7 @@ class ContentCategoryController extends Controller
 
     public function show($id)
     {
-        $contentCategory = ContentCategory::find($id);
+        $permission = Permission::find($id);
 
         $pageTitle = self::$pageTitle;
         $pageBreadcrumbs = self::$pageBreadcrumbs;
@@ -93,12 +94,12 @@ class ContentCategoryController extends Controller
         ];
         $routePath = self::$routePath;
 
-        return view(self::$folderPath.'.show', compact('contentCategory', 'pageTitle', 'pageBreadcrumbs', 'routePath'));
+        return view(self::$folderPath.'.show', compact('permission', 'pageTitle', 'pageBreadcrumbs', 'routePath'));
     }
 
     public function edit($id)
     {
-        $contentCategory = ContentCategory::find($id);
+        $permission = Permission::find($id);
 
         $pageTitle = self::$pageTitle;
         $pageBreadcrumbs = self::$pageBreadcrumbs;
@@ -108,14 +109,14 @@ class ContentCategoryController extends Controller
         ];
         $routePath = self::$routePath;
 
-        return view(self::$folderPath.'.edit', compact('contentCategory', 'pageTitle', 'pageBreadcrumbs', 'routePath'));
+        return view(self::$folderPath.'.edit', compact('permission', 'pageTitle', 'pageBreadcrumbs', 'routePath'));
     }
 
     public function update(Request $request, $id)
     {
-        $contentCategory = ContentCategory::find($id);
+        $permission = Permission::find($id);
         $req = $request->all();
-        $contentCategory->update($req);
+        $permission->update($req);
 
         if ($request->ajax()) {
             return response()->json([
@@ -131,7 +132,7 @@ class ContentCategoryController extends Controller
 
     public function destroy(Request $req, $id)
     {
-        $contentCategory = ContentCategory::find($id)->delete();
+        $permission = Permission::find($id)->delete();
 
         if ($req->ajax()) {
             return response()->json([

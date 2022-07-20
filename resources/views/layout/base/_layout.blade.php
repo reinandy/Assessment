@@ -13,7 +13,7 @@
                 @include('layout.base._aside')
             @endif
 
-            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper" style="padding-top: 65px;">
 
                 @include('layout.base._header')
 

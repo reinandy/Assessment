@@ -1,6 +1,6 @@
 {{-- Subheader V1 --}}
 
-<div class="subheader py-2 {{ Metronic::printClasses('subheader', false) }}" id="kt_subheader">
+<div class="subheader py-2 {{ Metronic::printClasses('subheader', false) }} d-none" id="kt_subheader">
     <div class="{{ Metronic::printClasses('subheader-container', false) }} d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
 
         {{-- Info --}}

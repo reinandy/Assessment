@@ -1,8 +1,15 @@
 {{-- Header --}}
-<div id="kt_header" class="header {{ Metronic::printClasses('header', false) }}" {{ Metronic::printAttrs('header') }}>
+<div id="kt_header" class="header {{ Metronic::printClasses('header', false) }} bg-primary" {{ Metronic::printAttrs('header') }}>
 
     {{-- Container --}}
     <div class="container-fluid d-flex align-items-center justify-content-between">
+        <h5 class="text-dark font-weight-bold my-2 mr-5">
+            <span class="text-white">{{ @$pageTitle }}</span>
+
+            @if (isset($pageDescription) && config('layout.subheader.displayDesc'))
+            <small>{{ @$pageDescription }}</small>
+            @endif
+        </h5>
         @if (config('layout.header.self.display'))
 
         @php

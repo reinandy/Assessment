@@ -34,7 +34,7 @@
     @yield('styles')
 </head>
 
-<body {{ Metronic::printAttrs('body') }} {{ Metronic::printClasses('body') }}>
+<body {{ Metronic::printAttrs('body') }} {{ Metronic::printClasses('body') }} style="background-image: url('/img/bg.png');background-position: center;background-size: cover;">
 
     <!-- @if (config('layout.page-loader.type') != '')
     @include('layout.partials._page-loader')
@@ -42,28 +42,9 @@
 
     <div class="d-flex flex-column flex-root">
         <!--begin::Login-->
-        <div class="login login-3 wizard d-flex flex-column flex-lg-row flex-column-fluid">
+        <div class="login login-3 wizard d-flex flex-column flex-lg-row justify-content-center align-items-center h-100">
             <!--begin::Aside-->
             <div class="login-aside d-flex flex-column flex-row-auto">
-                <!--begin::Aside Top-->
-                <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
-                    <!--begin::Aside header-->
-                    <a href="#" class="login-logo text-center pt-lg-25 pb-10">
-                        <!-- <img src="assets/media/logos/logo-1.png" class="max-h-70px" alt="" /> -->
-                        <img src="img/logo2.png" class="max-h-70px" alt="" />
-                    </a>
-                    <!--end::Aside header-->
-                    <!--begin::Aside Title-->
-                    <h3 class="font-weight-bolder text-center font-size-h4 text-dark-50 line-height-xl">
-                        {{ $pageDescription }}
-                    </h3>
-                    <!--end::Aside Title-->
-                </div>
-                <!--end::Aside Top-->
-                <!--begin::Aside Bottom-->
-                <div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center" style="background-position-y: calc(100% + 5rem); background-image: url(assets/media/svg/illustrations/login-visual-5.svg)"></div>
-                <!--end::Aside Bottom-->
-                </div>
                 <!--begin::Aside-->
                 <!--begin::Content-->
                 <div class="login-content flex-row-fluid d-flex flex-column p-10">

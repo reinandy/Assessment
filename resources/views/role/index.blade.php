@@ -38,16 +38,6 @@
                 ajax: "{{ route($routePath.'.index') }}",
                 columns: [
                     {
-                        title: 'No',
-                        class: 'text-center',
-                        width: '1%',
-                        data: 'id'
-                    },
-                    {
-                        title: 'name',
-                        data: 'name'
-                    },
-                    {
                         title: 'Action',
                         class: 'text-center',
                         width: '1%',
@@ -71,18 +61,20 @@
                             `;
                         }
                     },
+                    {
+                        title: 'No',
+                        class: 'text-center',
+                        width: '1%',
+                        data: 'id'
+                    },
+                    {
+                        title: 'name',
+                        data: 'name'
+                    }
                 ],
                 order: [[ 0, "DESC" ]]
             });
-
-            table.on( 'draw.dt', function () {
-                var info = table.page.info();
-                var i = 0;
-                for (let x = (info.start + 1); x <= info.end; x++) {
-                    table.column(0).nodes()[i].innerHTML = x;
-                    i++;
-                }
-            } ).draw();
+            table.column(1).visible(false)
 
             $('body').on('click', '.btn-delete', function(event) {
                 event.preventDefault();

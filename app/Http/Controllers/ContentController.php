@@ -42,12 +42,14 @@ class ContentController extends Controller
             return Datatables::of(Content::with('contentCategory'))->addIndexColumn()->make(true);
         }
 
+        $contentCategories = ContentCategory::pluck('name', 'id');
+
         $pageTitle = self::$pageTitle;
         $pageBreadcrumbs = self::$pageBreadcrumbs;
         $permissionName = self::$permissionName;
         $routePath = self::$routePath;
 
-        return view(self::$folderPath.'.index', compact('pageTitle', 'pageBreadcrumbs', 'permissionName', 'routePath'));
+        return view(self::$folderPath.'.index', compact('pageTitle', 'pageBreadcrumbs', 'permissionName', 'routePath', 'contentCategories'));
     }
 
     public function create()
@@ -95,6 +97,14 @@ class ContentController extends Controller
         $content = Content::create($req);
         if (count($contentFile)) {
             $content->contentFiles()->createMany($contentFile);
+        }
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'code' => 200,
+                'message' => self::$pageTitle.' created successfully'
+            ], 200);
         }
 
         return redirect()->route(self::$routePath.'.index')
@@ -161,6 +171,14 @@ class ContentController extends Controller
         $content->update($req);
         if (count($contentFile)) {
             $content->contentFiles()->createMany($contentFile);
+        }
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'code' => 200,
+                'message' => self::$pageTitle.' updated successfully'
+            ], 200);
         }
 
         return redirect()->route(self::$routePath.'.index')

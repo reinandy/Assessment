@@ -6,45 +6,83 @@ return [
         [
             'title' => 'Explore Now',
             'root' => true,
-            'icon' => 'assets/media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
+            'icon' => 'assets/media/svg/icons/Text/Article.svg', // or can be 'flaticon-home' or any flaticon-*
             'page' => 'dashboard',
             'new-tab' => false,
         ],
+        // [
+        //     'section' => 'User Management',
+        //     'menus' => ['role-list', 'user-list']
+        // ],
+        // 'role-list' => [
+        //     'title' => 'Role',
+        //     'root' => true,
+        //     'icon' => 'assets/media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
+        //     'page' => 'roles',
+        //     'new-tab' => false,
+        // ],
+        // 'user-list' => [
+        //     'title' => 'User',
+        //     'root' => true,
+        //     'icon' => 'assets/media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
+        //     'page' => 'users',
+        //     'new-tab' => false,
+        // ],
         [
-            'section' => 'Master Data',
-            'menus' => ['content-category-list', 'content-list']
-        ],
-        'content-category-list' => [
-            'title' => 'Master Category',
+            'title' => 'User Management',
+            'icon' => 'assets/media/svg/icons/Communication/Group.svg',
+            'bullet' => 'line',
             'root' => true,
-            'icon' => 'assets/media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => 'content-categories',
-            'new-tab' => false,
+            'bullet' => 'dot',
+            'submenu' => [
+                'user-list' => [
+                    'title' => 'Users',
+                    'page' => 'users',
+                ],
+                'permission-list' => [
+                    'title' => 'Permissions',
+                    'page' => 'permissions',
+                ],
+                'role-list' => [
+                    'title' => 'Roles',
+                    'page' => 'roles',
+                ]
+            ]
         ],
-        'content-list' => [
-            'title' => 'Master Article',
-            'root' => true,
-            'icon' => 'assets/media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => 'contents',
-            'new-tab' => false,
-        ],
+        // [
+        //     'section' => 'Master Data',
+        //     'menus' => ['content-category-list', 'content-list']
+        // ],
+        // 'content-category-list' => [
+        //     'title' => 'Master Category',
+        //     'root' => true,
+        //     'icon' => 'assets/media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
+        //     'page' => 'content-categories',
+        //     'new-tab' => false,
+        // ],
+        // 'content-list' => [
+        //     'title' => 'Master Article',
+        //     'root' => true,
+        //     'icon' => 'assets/media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
+        //     'page' => 'contents',
+        //     'new-tab' => false,
+        // ],
         [
-            'section' => 'User Management',
-            'menus' => ['role-list', 'user-list']
-        ],
-        'role-list' => [
-            'title' => 'Role',
+            'title' => 'Master Data',
+            'icon' => 'assets/media/svg/icons/Layout/Layout-vertical.svg',
+            'bullet' => 'line',
             'root' => true,
-            'icon' => 'assets/media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => 'roles',
-            'new-tab' => false,
-        ],
-        'user-list' => [
-            'title' => 'User',
-            'root' => true,
-            'icon' => 'assets/media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => 'users',
-            'new-tab' => false,
+            'bullet' => 'dot',
+            'submenu' => [
+                'content-category-list' => [
+                    'title' => 'Master Category',
+                    'page' => 'content-categories',
+                ],
+                'content-list' => [
+                    'title' => 'Master Article',
+                    'page' => 'contents',
+                ]
+            ]
         ],
         // [
         //     'title' => 'Applications',

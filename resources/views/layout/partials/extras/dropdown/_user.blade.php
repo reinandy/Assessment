@@ -13,7 +13,7 @@
     <div class="separator separator-solid"></div>
 @else
     {{-- Header --}}
-    <div class="d-flex align-items-center justify-content-between flex-wrap p-8 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url('{{ asset('assets/media/misc/bg-1.jpg') }}')">
+    <div class="d-flex align-items-center justify-content-between flex-wrap p-8 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url('{{ asset('assets/media/misc/bg-12.jpg') }}')">
         <div class="d-flex align-items-center mr-2">
             {{-- Symbol --}}
             <div class="symbol bg-white-o-15 mr-3">

@@ -1,4 +1,3 @@
-
 <form method="POST" action="{{ route($routePath.'.store') }}"  role="form" enctype="multipart/form-data">
     {{ method_field('POST') }}
     @csrf

@@ -39,12 +39,14 @@ class UserController extends Controller
             return Datatables::of(User::with('roles'))->addIndexColumn()->make(true);
         }
 
+        $roles = Role::pluck('name', 'name')->all();
+
         $pageTitle = self::$pageTitle;
         $pageBreadcrumbs = self::$pageBreadcrumbs;
         $permissionName = self::$permissionName;
         $routePath = self::$routePath;
 
-        return view(self::$folderPath.'.index', compact('pageTitle', 'pageBreadcrumbs', 'permissionName', 'routePath'));
+        return view(self::$folderPath.'.index', compact('pageTitle', 'pageBreadcrumbs', 'permissionName', 'routePath', 'roles'));
     }
 
     public function create()
@@ -69,6 +71,14 @@ class UserController extends Controller
         $req['password'] = Hash::make($req['password']);
         $user = User::create($req);
         $user->assignRole($req['roles']);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'code' => 200,
+                'message' => self::$pageTitle.' created successfully'
+            ], 200);
+        }
 
         return redirect()->route(self::$routePath.'.index')
             ->with('success', self::$pageTitle.' created successfully.');
@@ -119,6 +129,14 @@ class UserController extends Controller
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
 
         $user->assignRole($req['roles']);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'code' => 200,
+                'message' => self::$pageTitle.' updated successfully'
+            ], 200);
+        }
 
         return redirect()->route(self::$routePath.'.index')
             ->with('success', self::$pageTitle.' updated successfully');

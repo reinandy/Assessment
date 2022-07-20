@@ -41,7 +41,7 @@
         
                 <!-- Modal body -->
                 <div class="modal-body">
-                    @include('user.form')
+                    @include('permission.form')
                 </div>
         
             </div>
@@ -111,20 +111,6 @@
                         title: 'name',
                         data: 'name'
                     },
-                    {
-                        title: 'Username',
-                        data: 'username'
-                    },
-                    {
-                        title: 'Email',
-                        data: 'email'
-                    },
-                    {
-                        title: 'Role',
-                        searchable: false,
-                        data: 'roles[0].name',
-                        orderable: false
-                    }
                 ],
                 order: [[ 1, "DESC" ]]
             });
@@ -220,7 +206,6 @@
                 $.each(data, function (i, v) { 
                     $(`.form-group input[name="${i}"]`).val(v);
                 });
-                $(`.form-group select[name="roles"]`).val(data.roles[0].name);
 
                 $('#mtitle').text('Update');
                 $('form').attr('action', action + '/' + data.id);

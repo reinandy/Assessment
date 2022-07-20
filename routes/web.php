@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('contents/destroy-content-file/{id}', 'ContentController@destroyContentFile')->name('content.destroy-content-file');
 	// end contents
 	Route::resource('content-categories', 'ContentCategoryController');
+	Route::resource('permissions', 'PermissionController');
 });
 
 // Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
